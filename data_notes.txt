@@ -1,0 +1,64 @@
+Data Notes:
+    PRICE(whats the best mse we can get with a model from each?)
+price: 
+
+log price:
+
+    PREDICTORS(initial review from raw multivar regresn)
+bedrooms:  
+            -indicating value = 1 for presumable studios
+            , neg corr on raw multivar regression???
+
+sqft_liv:  
+            -little skewed,  good corr -> prob log norm  
+
+sqft_lot:  
+            -indicating size of apt buildings
+            ,     - THROW OUT - 
+
+floors:
+            -wild p val when raw
+
+wtrft: 
+            -hi coef, lo p
+            
+view:
+            -hi coef, lo p
+            , "wouldn't nicer places just be viewed more??
+                How could it cause a higher price??
+                Could deter lo-balling"
+                
+condxn:
+            -grade seems to be a better indicator
+            , and they're refering to the same thing rigght?
+
+grade:
+            -seems to be better indicator than condxn
+            
+sqft_above:
+            -not as strong as sqft_liv and they're covering 
+                the same thing
+            , maybe use a ratio of 'what portion of sqft is
+                above the basement??'
+                
+sqft_base:
+            -similar thoughts
+            , also some 'question mark' values
+            
+yr_built:
+            -neg coef in model??
+            , maybe combine with yr_reno'd
+            
+yr_reno'd:
+            -turn into time since repair
+            
+zip:
+            -bool for 'in seattle'?
+            
+lat&long:
+            -compute distance from seattle center
+            
+living15:
+            -v
+lot15:
+            -
