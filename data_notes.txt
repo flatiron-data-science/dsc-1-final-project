@@ -8,6 +8,7 @@ log price:
 bedrooms:  
             -indicating value = 1 for presumable studios
             , neg corr on raw multivar regression???
+            thinking  THROW OUT
 
 sqft_liv:  
             -little skewed,  good corr -> prob log norm  
