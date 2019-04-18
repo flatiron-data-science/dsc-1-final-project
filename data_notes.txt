@@ -12,7 +12,8 @@ bedrooms:
             thinking  THROW OUT
 Bathrooms:
             -A team
-sqft_liv:  
+sqft_liv: 
+            -A team
             -little skewed,  good corr -> prob log norm  
 
 sqft_lot:  -Rubbish
@@ -52,6 +53,7 @@ sqft_above:
                 above the basement??'
                 
 sqft_base:
+            B -team
             -similar thoughts
             , also some 'question mark' values
             one-hot for has basement? or not
