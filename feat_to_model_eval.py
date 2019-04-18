@@ -13,6 +13,11 @@ from sklearn.model_selection import KFold
 
 
 def feat_to_model_kfold_eval(target: str, df, kvals: list, show_summary=False, price_logged=False, MAE=False):
+    '''Returns:
+            -line vector of type array
+            -list of residuals of type array
+            -root mean squared error
+            -mean absolute error if activated'''
             
     predictors = df.drop(target, axis=1)
     f = "+".join(predictors.columns)
@@ -36,23 +41,24 @@ def feat_to_model_kfold_eval(target: str, df, kvals: list, show_summary=False, p
                 y_hat = linreg.predict(X_test)
                 errs = y_test - y_hat
                 if price_logged:
-                    errs = np.exp(y_test / y_hat)
+                    errs = np.exp(y_test) - np.exp(y_hat)
 
                 total_errs = np.concatenate((total_errs, errs))
     line = np.array(model.params)
     rmse = np.sqrt(np.mean(total_errs**2))
+
     if MAE:
         mae = abs(total_errs).mean()
         print(f'Line: {line}\n'
              f'RMSE: {rmse}\n'
              f'MAE: {mae}\n'
-             f'THIS IS A STRINGGG')
-        return line, rmse, mae
+             f'MAE DISPLAYED')
+        return line, total_errs, rmse, mae
     else:
         print(f'Line: {line}\n'
              f'RMSE: {rmse}\n'
-             f'THIS IS A ANOTHER STRINGGG')
-        return line, rmse
+             f'Please pass in MAE=True if you\'d like to see MAE')
+        return line, total_errs, rmse
             
 def predict_from_line(line_vector, predict_vector):
     '''Predict vector element unit 1 to multiply the intercept'''
