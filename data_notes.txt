@@ -6,37 +6,46 @@ log price:
 
     PREDICTORS(initial review from raw multivar regresn)
 bedrooms:  
+            -Rubbish
             -indicating value = 1 for presumable studios
             , neg corr on raw multivar regression???
             thinking  THROW OUT
-
+Bathrooms:
+            -A team
 sqft_liv:  
             -little skewed,  good corr -> prob log norm  
 
-sqft_lot:  
+sqft_lot:  -Rubbish
             -indicating size of apt buildings
             ,     - THROW OUT - 
 
 floors:
+            -Rubbish
             -wild p val when raw
 
 wtrft: 
+            - A team
             -hi coef, lo p
+            -not very correlated with other predictors 
             
 view:
+            
             -hi coef, lo p
             , "wouldn't nicer places just be viewed more??
                 How could it cause a higher price??
                 Could deter lo-balling"
                 
 condxn:
+            - Rubbish
             -grade seems to be a better indicator
             , and they're refering to the same thing rigght?
 
 grade:
+            - A team. v.corr()
             -seems to be better indicator than condxn
             
 sqft_above:
+            - Put on the B team
             -not as strong as sqft_liv and they're covering 
                 the same thing
             , maybe use a ratio of 'what portion of sqft is
@@ -45,6 +54,7 @@ sqft_above:
 sqft_base:
             -similar thoughts
             , also some 'question mark' values
+            one-hot for has basement? or not
             
 yr_built:
             -neg coef in model??
@@ -60,6 +70,8 @@ lat&long:
             -compute distance from seattle center
             
 living15:
-            -v
+           -A team
+           -v corr()
 lot15:
-            -
+            -Rubbish
+B concepts: 
