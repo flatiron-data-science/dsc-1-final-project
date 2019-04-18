@@ -1,0 +1,3 @@
+Key questions:
+    -What aspects best predict the cost of a house in King County? What do you really need to know about a house to accurately predict its price?
+    -Given that information, what's your given price for a given house?
