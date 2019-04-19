@@ -77,3 +77,23 @@ living15:
 lot15:
             -Rubbish
 B concepts: 
+
+From the top:
+
+Data Preparation:
+
+1. Partition raw data with sklearn train_test_split; 15% does to df_holdout
+2. Look at scatter plots of each predictor with respect to "price"
+3. Remove columns "id," "date," and "sqft_basement,"; not all of the dwellings have basements.
+4. Scatter matrix and correlation table of all remaining categories (except zipcode) to consider which had a slightly linear correlation. Of these, "sqft_living," ""sqft_living15," "bathrooms," and "grade" were the best candidates. However, the distributions were not very normal. Ultimately, the model improved using "log_price," "log_sqft_living," "log_sqft_living15," "grade," and bathrooms. The distribution of bathrooms did not improve with log transform because some of its values are less than one.
+5. One-Hot-Encoding of "zipcode." 
+
+Modeling:
+    With these columns to choose from we modeled several combinations to for multilinear regression with the aim of minimizing Mean Absolute Error. We built a function, feat_to_model_kfold_eval, which takes as arguments target = "column name," predictors = list of column names, df = dataframe, kvals = list of k-folds, show_summary = Boolean, price_logged = Boolean, MAE = Boolean. This returns the "best fit" line array with intercept and coefficients, total errors, MAE (in dollars) if True and RMSE if False. This enabled us to rapidly run, cross-validate, and compare models. 
+
+Feature Engineering:
+    Downtown Seattle is a major area of employment, so we used the Haversine to generate distance_to_flatiron as a new column for consideration. Including it lowered our MAE somewhat, but it's worth noting that downtown Seattle is on the water; preventing an even distribution of distances.
+    
+Conclusion:
+    The most robust predictors were "log_grade," "log_sqft_living," "log_sqft_living15," and "bathrooms." 
+
