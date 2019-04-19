@@ -1,3 +1,6 @@
+Credits:
+Original work by Patrick Fuller and Tara Greenwood
+Housing pictures from Wikimedia Commons
 
 # Module 1 Final Project
 
