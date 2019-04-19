@@ -1,4 +1,16 @@
 Key questions:
     -What aspects best predict the cost of a house in King County? What do you really need to know about a house to accurately predict its price?
     -What information is unhelpful?
+    -How do we measure success? We use MAE primarily.
     -Given that information, what's our predicted price for a given house?
+    
+ Step 1: Data Understanding
+     What's going on with with the data initially?
+      Our target is "price," but its histogram shows a slightly skewed distribution with a high kurtosis. Using natural "log_price," shows a more normal distribution, an essential assumption for linear regression.
+      
+      
+      
+      What columns could be disregarded?
+      "id" and "date" did not correlate with price and are functionally more similar to names than numbers. "bedrooms" had no linear relationship with price and contained a huge outlier of 33 bedrooms, and . Moreover the minimum number of bedrooms in the dataset is one but the "sqft_living" of some of those houses implies studios, throughing doubt into the validity of that category. "sqft_lotsquare" was often much, much higher than "sqft_living" for the same dwelling; implying this may be the lot size for an entire building. 
+      
+      
