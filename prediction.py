@@ -10,7 +10,7 @@ def make_a_house(**kwargs):
     display(mock_home_df)
     return mock_home_df
 
-def predict_home_price(linear_coefs: dict, **kwargs):
+def predict_home_price(linear_coefs: dict, price_logged=False, **kwargs):
     sum_price = 0
     house = make_a_house(**kwargs)
     for col, coef in linear_coefs.items():
@@ -20,4 +20,6 @@ def predict_home_price(linear_coefs: dict, **kwargs):
             continue
         else:
             sum_price += coef * house.loc['test_home', str(col)]
+    if price_logged:
+        return np.exp(sum_price)
     return sum_price
