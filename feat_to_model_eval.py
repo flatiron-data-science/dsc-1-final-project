@@ -12,15 +12,18 @@ from matplotlib import pyplot as plt
 from sklearn.model_selection import KFold
 
 
-def feat_to_model_kfold_eval(target: str, df, kvals: list, show_summary=False, price_logged=False, MAE=False):
+def feat_to_model_kfold_eval(target: str, predictors:list, df, kvals: list, show_summary=False, price_logged=False, MAE=False):
     '''Returns:
             -line vector of type array
             -list of residuals of type array
             -root mean squared error
             -mean absolute error if activated'''
-            
-    predictors = df.drop(target, axis=1)
-    f = "+".join(predictors.columns)
+    
+    df = df[[target] + predictors]     # removing any features not included in model
+    
+    predictors_df = df.drop(target, axis=1)    
+    
+    f = "+".join(predictors_df.columns)
     f = target + "~" + f
     model = ols(formula=f, data=df).fit()
     if show_summary:
