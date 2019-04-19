@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 
 def make_a_house(**kwargs):
-    '''Takes in a dataframe as a skeleton for generating logs'''
     mock_home_df = pd.DataFrame([])
     for col, value in kwargs.items():
         mock_home_df.loc['test_home', str(col)] = value
